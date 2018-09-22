@@ -9,5 +9,5 @@ public interface CustomerRepository {
 
     List<CustomerEntity> findCustomerByName(@Param("name") String name);
 
-    
+
 }
