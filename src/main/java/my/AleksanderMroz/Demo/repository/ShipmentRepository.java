@@ -2,17 +2,15 @@ package my.AleksanderMroz.Demo.repository;
 
 import my.AleksanderMroz.Demo.entity.ShipmentEntity;
 import my.AleksanderMroz.Demo.enumeration.ShipmentStatus;
+import my.AleksanderMroz.Demo.repository.customDAO.ShipmentCustomRepository;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface ShipmentRepository {
+public interface ShipmentRepository extends CrudRepository<ShipmentEntity, Long> , ShipmentCustomRepository {
 
 
-    List<ShipmentEntity> findShipmentByDestination(@Param("destination") String destination);
 
-    List<ShipmentEntity> findShipmentById(@Param("id") long id);
-
-    List<ShipmentEntity> findShipmentByStatus(@Param("status") ShipmentStatus status);
 
 }
