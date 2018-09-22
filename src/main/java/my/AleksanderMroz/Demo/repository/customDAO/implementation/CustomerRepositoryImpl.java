@@ -20,11 +20,10 @@ public class CustomerRepositoryImpl implements CustomerCustomRepository {
     @Override
     public List<CustomerEntity> findCustomerByName(String name) {
         TypedQuery<CustomerEntity> query = entityManager.createQuery(
-                "select car from CarEntity car where upper(car.carType) like concat(upper(:carType), '%')",
+                "select customer from CustomerEntity customer where upper(customer.customerName) like concat(upper(:name), '%')",
                 CustomerEntity.class);
-        query.setParameter("carType", name); // cale porownanie
+        query.setParameter("name", name);
         return query.getResultList();
     }
 
-    //@Query("select book from BookEntity book where upper(book.title) like concat(upper(:title), '%')")
 }

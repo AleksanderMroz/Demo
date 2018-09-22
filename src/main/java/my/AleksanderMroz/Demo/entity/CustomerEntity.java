@@ -9,19 +9,15 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "CUSTOMER")
-
 public class CustomerEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-
     @Column(nullable = false, length = 50)
     private String customerName;
     @Column(nullable = false, length = 200)
     private String password;
-
     @Column(nullable = false, length = 200)
     private String address;
 

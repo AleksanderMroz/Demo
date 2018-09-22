@@ -7,10 +7,17 @@ import my.AleksanderMroz.Demo.repository.ShipmentRepository;
 import my.AleksanderMroz.Demo.repository.customDAO.ShipmentCustomRepository;
 import org.springframework.stereotype.Repository;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Repository
 public class ShipmentRepositoryImpl implements ShipmentCustomRepository {
+
+    @PersistenceContext
+    EntityManager entityManager;
+
+
     @Override
     public List<ShipmentEntity> findShipmentByDestination(String destination) {
         return null;
