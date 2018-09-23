@@ -10,4 +10,6 @@ public class DemoApplication {
 		System.setProperty("spring.profiles.active", "mysql");
 		SpringApplication.run(DemoApplication.class, args);
 	}
+
+
 }
