@@ -3,16 +3,33 @@
       xmlns:th="http://www.thymeleaf.org"
       layout:decorate="~{fragments/layout}">
 <head>
-    <title>Login</title>
+    <title>welcome</title>
 </head>
 <body>
-Somet
+Something
 <div layout:fragment="content" th:remove="tag">
     <section>
         <div class="jumbotron">
             <div class="container">
                 <h1 th:text="${message}"></h1>
                 <p th:text="${info}"></p>
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+        <div class="row">
+            <div class="col-sm-6 col-md-3" style="padding-bottom: 15px">
+                <div class="thumbnail">
+                    <div class="caption">
+                        <h3>Shipments</h3>
+                        <p>
+                            <a th:href="@{/books}" class="btn btn-default"> <span
+                                    class="glyphicon-info-sign glyphicon"/></span> Show me all my shipments
+                            </a>
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

@@ -1,6 +1,7 @@
 package my.AleksanderMroz.Demo;
 
 
+import my.AleksanderMroz.Demo.controller.HomeController;
 import nz.net.ultraq.thymeleaf.LayoutDialect;
 
 
@@ -16,8 +17,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @SpringBootApplication
 @EnableJpaRepositories
 @EntityScan
-@ComponentScan ("my.AleksanderMroz.Demo")
-public class DemoApplication extends SpringBootServletInitializer {
+@ComponentScan
+public class DemoApplication {
 
 	public static void main(String[] args) {
 		System.setProperty("spring.profiles.active", "mysql");
