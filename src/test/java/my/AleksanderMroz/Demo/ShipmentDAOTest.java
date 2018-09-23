@@ -32,15 +32,31 @@ public class ShipmentDAOTest {
     }
 
     @Test
-    public void shouldGetShipment()
+    public void shouldGetShipmentById()
     {
-
          Optional<ShipmentEntity> first = shipmentRepository.findById(1L);
          Assert.assertNotNull(first);
-         Assert.assertEquals("Moscow",first.get().getDestination());
-        Assert.assertEquals(1500,first.get().getValue());
-        Assert.assertEquals(ShipmentStatus.WAIT,first.get().getStatus());
+         Assert.assertEquals("Moscow1",first.get().getDestination());
+         Assert.assertEquals(1501,first.get().getValue());
+         Assert.assertEquals(ShipmentStatus.WAIT,first.get().getStatus());
+    }
 
+    @Test
+    public void shouldGetShipmentByDestination()
+    {
+        List<ShipmentEntity> second = shipmentRepository.findShipmentByDestination("Moscow2");
+        Assert.assertNotNull(second);
+        Assert.assertEquals(1,second.size());
+        //Assert.assertEquals("Moscow2",second.get(0).getDestination());
+
+    }
+
+    @Test
+    public void shouldGetShipmentByStatus()
+    {
+        List<ShipmentEntity> allFive= shipmentRepository.findShipmentByStatus(ShipmentStatus.WAIT);
+        Assert.assertNotNull(allFive);
+        Assert.assertEquals(5,allFive.size());
     }
 
 }

@@ -1,6 +1,7 @@
 package my.AleksanderMroz.Demo.repository.customDAO.implementation;
 
 
+import my.AleksanderMroz.Demo.entity.CustomerEntity;
 import my.AleksanderMroz.Demo.entity.ShipmentEntity;
 import my.AleksanderMroz.Demo.enumeration.ShipmentStatus;
 import my.AleksanderMroz.Demo.repository.ShipmentRepository;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import java.util.List;
 
 @Repository
@@ -20,16 +22,21 @@ public class ShipmentRepositoryImpl implements ShipmentCustomRepository {
 
     @Override
     public List<ShipmentEntity> findShipmentByDestination(String destination) {
-        return null;
-    }
+        TypedQuery<ShipmentEntity> query = entityManager.createQuery(
+                "select shipment from ShipmentEntity shipment where upper(shipment.destination) like concat(upper(:destination), '%')",
+                ShipmentEntity.class);
+            query.setParameter("destination", destination);
 
-    @Override
-    public List<ShipmentEntity> findShipmentById(long id) {
-        return null;
+        return query.getResultList();
     }
-
     @Override
     public List<ShipmentEntity> findShipmentByStatus(ShipmentStatus status) {
-        return null;
+        String statusString = status.toString();
+        TypedQuery<ShipmentEntity> query = entityManager.createQuery(
+                "select shipment from ShipmentEntity shipment where upper(shipment.status) like concat(upper(:status), '%')",
+                ShipmentEntity.class);
+        query.setParameter("status", statusString);
+
+        return query.getResultList();
     }
 }
