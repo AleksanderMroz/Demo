@@ -1,11 +1,14 @@
 package my.AleksanderMroz.Demo.controller;
 
 
+
+
 import my.AleksanderMroz.Demo.constants.ModelConstants;
 import my.AleksanderMroz.Demo.constants.ViewNames;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class HomeController {
@@ -13,18 +16,13 @@ public class HomeController {
     protected static final String WELCOME = "WELCOME";
 
 
-    @GetMapping(value = "/")
+    @RequestMapping(value = "/")
     public String welcome(Model model) {
         model.addAttribute(ModelConstants.MESSAGE, WELCOME);
         model.addAttribute(ModelConstants.INFO, INFO_TEXT);
         return ViewNames.WELCOME;
     }
 
-    @GetMapping(value = "/login")
-    public String login(Model model) {
-
-        return "login";
-    }
 
 
 }
