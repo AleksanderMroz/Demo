@@ -6,6 +6,6 @@ insert into SHIPMENT (destination, value, status) values ("Moscow5",1505,"WAIT")
 
 
 
-insert into CUSTOMER (customer_name,password,address) values ("Aleksander","Top1","Wro");
+insert into CUSTOMER (customer_name,password,address) values ("Aleksander","Top3","Wro");
 
 

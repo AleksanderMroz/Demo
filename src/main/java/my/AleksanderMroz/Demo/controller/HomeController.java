@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+
+//@EnableAutoConfiguration
+@RestController
 public class HomeController {
 
 
@@ -20,11 +22,12 @@ public class HomeController {
     protected static final String WELCOME = "WELCOME";
 
 
-    @GetMapping(value = "/")
+    @RequestMapping(value = "/")
     public String welcome(Model model) {
-        model.addAttribute(ModelConstants.MESSAGE, WELCOME);
-        model.addAttribute(ModelConstants.INFO, INFO_TEXT);
-        return ViewNames.WELCOME;
+    model.addAttribute(ModelConstants.MESSAGE, WELCOME);
+    model.addAttribute(ModelConstants.INFO, INFO_TEXT);
+    return ViewNames.WELCOME;
+
     }
 
 
