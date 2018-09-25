@@ -14,20 +14,25 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 //@EnableAutoConfiguration
-@RestController
+@Controller
 public class HomeController {
 
 
-    private static final String INFO_TEXT = "Here is my first my Welcome Page";
-    protected static final String WELCOME = "WELCOME";
+    private static final String INFO_TEXT = "To nawet działa :)";
+    protected static final String WELCOME = "Sebo, Koksie";
 
 
-    @RequestMapping(value = "/")
+    @GetMapping(value = "/")
     public String welcome(Model model) {
     model.addAttribute(ModelConstants.MESSAGE, WELCOME);
     model.addAttribute(ModelConstants.INFO, INFO_TEXT);
     return ViewNames.WELCOME;
+    }
 
+    @GetMapping(value = "/login")
+    public String login(Model model) {
+
+        return "shipments";
     }
 
 

@@ -3,10 +3,10 @@
       xmlns:th="http://www.thymeleaf.org"
       layout:decorate="~{fragments/layout}">
 <head>
-    <title>welcome</title>
+    <title>welcome2</title>
 </head>
 <body>
-Something
+
 <div layout:fragment="content" th:remove="tag">
     <section>
         <div class="jumbotron">
@@ -17,15 +17,18 @@ Something
         </div>
     </section>
 
+
+
     <section class="container">
         <div class="row">
             <div class="col-sm-6 col-md-3" style="padding-bottom: 15px">
                 <div class="thumbnail">
                     <div class="caption">
                         <h3>Shipments</h3>
+                        <p>Show me all my shipments</p>
                         <p>
-                            <a th:href="@{/books}" class="btn btn-default"> <span
-                                    class="glyphicon-info-sign glyphicon"/> Show me all my shipments
+                            <a th:href="@{/shipments}" class="btn btn-default"> <span
+                                    class="glyphicon-info-sign glyphicon"/></span> Show 1
                             </a>
                         </p>
                     </div>
@@ -33,6 +36,43 @@ Something
             </div>
         </div>
     </section>
+
+    <section class="container">
+        <div class="row">
+            <div class="col-sm-6 col-md-3" style="padding-bottom: 15px">
+                <div class="thumbnail">
+                    <div class="caption">
+                        <h3>Create new delivery</h3>
+                        <p>Create new </p>
+                        <p>
+                            <a th:href="@{/shipments/add}" class="btn btn-default"> <span
+                                    class="glyphicon-info-sign glyphicon"/></span> Create
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+        <div class="row">
+            <div class="col-sm-6 col-md-3" style="padding-bottom: 15px">
+                <div class="thumbnail">
+                    <div class="caption">
+                        <h3>Find my package</h3>
+                        <p>Find my</p>
+                        <p>
+                            <a th:href="@{/shipments/find_shipments}" class="btn btn-default"> <span
+                                    class="glyphicon-info-sign glyphicon"/></span> Find
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
 </div>
 
 </body>
