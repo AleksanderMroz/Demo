@@ -1,11 +1,7 @@
 package my.AleksanderMroz.Demo.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "CUSTOMER")
@@ -20,6 +16,10 @@ public class CustomerEntity {
     private String password;
     @Column(nullable = false, length = 200)
     private String address;
+
+    @OneToMany(fetch = FetchType.LAZY,mappedBy="owner",cascade={CascadeType.PERSIST,CascadeType.MERGE})
+    private List<ShipmentEntity> shipments;
+
 
     protected CustomerEntity() {
     }
