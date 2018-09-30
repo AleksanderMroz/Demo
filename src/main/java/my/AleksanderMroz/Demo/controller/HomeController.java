@@ -18,8 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class HomeController {
 
 
-    private static final String INFO_TEXT = "To nawet działa :)";
-    protected static final String WELCOME = "Sebo, Koksie";
+    private static final String INFO_TEXT = "Moja aplikacja do zademonstrowania umiejętnosci ze SpringBootem, Hibernatem, Bazami Danych ";
+    protected static final String WELCOME = "Witaj";
 
 
     @GetMapping(value = "/")

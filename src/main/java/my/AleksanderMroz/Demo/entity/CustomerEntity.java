@@ -17,18 +17,27 @@ public class CustomerEntity {
     @Column(nullable = false, length = 200)
     private String address;
 
-    @OneToMany(fetch = FetchType.LAZY,mappedBy="owner",cascade={CascadeType.PERSIST,CascadeType.MERGE})
+    @OneToMany(fetch = FetchType.LAZY,mappedBy="owner",cascade={CascadeType.ALL})
     private List<ShipmentEntity> shipments;
 
 
     protected CustomerEntity() {
     }
 
-    public CustomerEntity(Long id, String customerName, String password, String address) {
+    public CustomerEntity(Long id, String customerName, String password, String address, List<ShipmentEntity> shipments) {
         this.id = id;
         this.customerName = customerName;
         this.password = password;
         this.address = address;
+        this.shipments = shipments;
+    }
+
+    public List<ShipmentEntity> getShipments() {
+        return shipments;
+    }
+
+    public void setShipments(List<ShipmentEntity> shipments) {
+        this.shipments = shipments;
     }
 
     public Long getId() {
