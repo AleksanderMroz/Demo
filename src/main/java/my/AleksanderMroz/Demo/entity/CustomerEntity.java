@@ -20,6 +20,9 @@ public class CustomerEntity {
     @OneToMany(fetch = FetchType.LAZY,mappedBy="owner",cascade={CascadeType.ALL})
     private List<ShipmentEntity> shipments;
 
+    @OneToMany(fetch = FetchType.LAZY,mappedBy="opinion_id",cascade={CascadeType.ALL})
+    private List<OpinionEntity> opinions;
+
 
     protected CustomerEntity() {
     }

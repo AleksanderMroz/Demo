@@ -34,13 +34,19 @@ public class ShipmentEntity {
     @JoinColumn(name = "ID_OWNER")
     private CustomerEntity owner;
 
+
+    @OneToMany(fetch = FetchType.LAZY,mappedBy="whole_package",cascade={CascadeType.ALL})
+    private List<ProductEntity> produkts;
+
     @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.MERGE })
     @JoinTable(name = "COURIER_SHIPMENT", joinColumns = {
             @JoinColumn(name = "COURIER_ID", nullable = false, updatable = false) }, inverseJoinColumns = {
             @JoinColumn(name = "SHIPMENT_ID", nullable = false, updatable = false) })
     List<CourierEntitiy> couriers;
 
-    
+
+
+
     protected ShipmentEntity() {
     }
 
