@@ -35,15 +35,14 @@ public class ProductEntity {
     public ProductEntity() {
     }
 
-    public ProductEntity(Long id, int value, SizeStatus sizeStatus, VariantStatus variantStatus) {
+    public ProductEntity(Long id, int value, SizeStatus sizeStatus, VariantStatus variantStatus, ShipmentEntity whole_package, List<OpinionEntity> opinions) {
         this.id = id;
         this.value = value;
         this.sizeStatus = sizeStatus;
         this.variantStatus = variantStatus;
+        this.whole_package = whole_package;
+        this.opinions = opinions;
     }
-
-
-
 
     public Long getId() {
         return id;
@@ -75,5 +74,21 @@ public class ProductEntity {
 
     public void setVariantStatus(VariantStatus variantStatus) {
         this.variantStatus = variantStatus;
+    }
+
+    public ShipmentEntity getWhole_package() {
+        return whole_package;
+    }
+
+    public void setWhole_package(ShipmentEntity whole_package) {
+        this.whole_package = whole_package;
+    }
+
+    public List<OpinionEntity> getOpinions() {
+        return opinions;
+    }
+
+    public void setOpinions(List<OpinionEntity> opinions) {
+        this.opinions = opinions;
     }
 }

@@ -20,27 +20,20 @@ public class CustomerEntity {
     @OneToMany(fetch = FetchType.LAZY,mappedBy="owner",cascade={CascadeType.ALL})
     private List<ShipmentEntity> shipments;
 
-    @OneToMany(fetch = FetchType.LAZY,mappedBy="opinion_id",cascade={CascadeType.ALL})
+    @OneToMany(fetch = FetchType.LAZY,mappedBy="customer_id",cascade={CascadeType.ALL})
     private List<OpinionEntity> opinions;
 
 
     protected CustomerEntity() {
     }
 
-    public CustomerEntity(Long id, String customerName, String password, String address, List<ShipmentEntity> shipments) {
+    public CustomerEntity(Long id, String customerName, String password, String address, List<ShipmentEntity> shipments, List<OpinionEntity> opinions) {
         this.id = id;
         this.customerName = customerName;
         this.password = password;
         this.address = address;
         this.shipments = shipments;
-    }
-
-    public List<ShipmentEntity> getShipments() {
-        return shipments;
-    }
-
-    public void setShipments(List<ShipmentEntity> shipments) {
-        this.shipments = shipments;
+        this.opinions = opinions;
     }
 
     public Long getId() {
@@ -73,5 +66,21 @@ public class CustomerEntity {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public List<ShipmentEntity> getShipments() {
+        return shipments;
+    }
+
+    public void setShipments(List<ShipmentEntity> shipments) {
+        this.shipments = shipments;
+    }
+
+    public List<OpinionEntity> getOpinions() {
+        return opinions;
+    }
+
+    public void setOpinions(List<OpinionEntity> opinions) {
+        this.opinions = opinions;
     }
 }

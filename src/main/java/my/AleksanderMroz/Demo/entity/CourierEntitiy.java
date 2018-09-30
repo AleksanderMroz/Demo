@@ -13,7 +13,7 @@ public class CourierEntitiy {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(nullable = false, length = 50)
-    private String customerName;
+    private String courierName;
     @Column(nullable = false, length = 200)
     private String password;
     @Column(nullable = false, length = 200)
@@ -30,12 +30,11 @@ public class CourierEntitiy {
 
     public CourierEntitiy(Long id, String customerName, String password, String address, List<ShipmentEntity> shipments) {
         this.id = id;
-        this.customerName = customerName;
+        this.courierName = customerName;
         this.password = password;
         this.address = address;
         this.shipments = shipments;
     }
-
 
     public Long getId() {
         return id;
@@ -45,12 +44,12 @@ public class CourierEntitiy {
         this.id = id;
     }
 
-    public String getCustomerName() {
-        return customerName;
+    public String getCourierName() {
+        return courierName;
     }
 
-    public void setCustomerName(String customerName) {
-        this.customerName = customerName;
+    public void setCourierName(String customerName) {
+        this.courierName = customerName;
     }
 
     public String getPassword() {

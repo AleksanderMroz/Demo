@@ -36,7 +36,7 @@ public class ShipmentEntity {
 
 
     @OneToMany(fetch = FetchType.LAZY,mappedBy="whole_package",cascade={CascadeType.ALL})
-    private List<ProductEntity> produkts;
+    private List<ProductEntity> products;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.MERGE })
     @JoinTable(name = "COURIER_SHIPMENT", joinColumns = {
@@ -50,19 +50,16 @@ public class ShipmentEntity {
     protected ShipmentEntity() {
     }
 
-    public ShipmentEntity(Long id, String destination, long value, ShipmentStatus status, CustomerEntity owner) {
+    public ShipmentEntity(Long id, long value, ShipmentStatus status, OutpostEntity startOutpost, OutpostEntity currentOutpost, OutpostEntity endOutpost, CustomerEntity owner, List<ProductEntity> produkts, List<CourierEntitiy> couriers) {
         this.id = id;
         this.value = value;
         this.status = status;
+        this.startOutpost = startOutpost;
+        this.currentOutpost = currentOutpost;
+        this.endOutpost = endOutpost;
         this.owner = owner;
-    }
-
-    public CustomerEntity getOwner() {
-        return owner;
-    }
-
-    public void setOwner(CustomerEntity owner) {
-        this.owner = owner;
+        this.products = produkts;
+        this.couriers = couriers;
     }
 
     public Long getId() {
@@ -72,7 +69,6 @@ public class ShipmentEntity {
     public void setId(Long id) {
         this.id = id;
     }
-
 
     public long getValue() {
         return value;
@@ -89,4 +85,54 @@ public class ShipmentEntity {
     public void setStatus(ShipmentStatus status) {
         this.status = status;
     }
+
+    public OutpostEntity getStartOutpost() {
+        return startOutpost;
+    }
+
+    public void setStartOutpost(OutpostEntity startOutpost) {
+        this.startOutpost = startOutpost;
+    }
+
+    public OutpostEntity getCurrentOutpost() {
+        return currentOutpost;
+    }
+
+    public void setCurrentOutpost(OutpostEntity currentOutpost) {
+        this.currentOutpost = currentOutpost;
+    }
+
+    public OutpostEntity getEndOutpost() {
+        return endOutpost;
+    }
+
+    public void setEndOutpost(OutpostEntity endOutpost) {
+        this.endOutpost = endOutpost;
+    }
+
+    public CustomerEntity getOwner() {
+        return owner;
+    }
+
+    public void setOwner(CustomerEntity owner) {
+        this.owner = owner;
+    }
+
+    public List<ProductEntity> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<ProductEntity> produkts) {
+        this.products = produkts;
+    }
+
+    public List<CourierEntitiy> getCouriers() {
+        return couriers;
+    }
+
+    public void setCouriers(List<CourierEntitiy> couriers) {
+        this.couriers = couriers;
+    }
 }
+
+
