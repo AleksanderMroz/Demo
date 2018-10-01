@@ -2,6 +2,7 @@ package my.AleksanderMroz.Demo.repository.customDAO.implementation;
 
 
 import my.AleksanderMroz.Demo.entity.CustomerEntity;
+import my.AleksanderMroz.Demo.entity.OutpostEntity;
 import my.AleksanderMroz.Demo.entity.ShipmentEntity;
 import my.AleksanderMroz.Demo.enumeration.ShipmentStatus;
 import my.AleksanderMroz.Demo.repository.ShipmentRepository;
@@ -39,4 +40,11 @@ public class ShipmentRepositoryImpl implements ShipmentCustomRepository {
 
         return query.getResultList();
     }
+
+    @Override
+    public List<ShipmentEntity> findShipmentsInOutpost(OutpostEntity outpost) {
+        return null;
+    }
+
+
 }

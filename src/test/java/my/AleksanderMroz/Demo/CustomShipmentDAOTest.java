@@ -20,7 +20,7 @@ import java.util.Optional;
 @RunWith(SpringRunner.class)
 @SpringBootTest(properties = "spring.profiles.active=mysql")
 @Transactional
-public class ShipmentDAOTest {
+public class CustomShipmentDAOTest {
     @Autowired
     ShipmentRepository shipmentRepository;
 

@@ -36,6 +36,8 @@ public class CustomerEntity {
         this.opinions = opinions;
     }
 
+
+
     public Long getId() {
         return id;
     }

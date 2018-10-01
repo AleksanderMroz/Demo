@@ -2,6 +2,7 @@ package my.AleksanderMroz.Demo;
 
 
 import my.AleksanderMroz.Demo.entity.CustomerEntity;
+import my.AleksanderMroz.Demo.entity.OpinionEntity;
 import my.AleksanderMroz.Demo.repository.CustomerRepository;
 import org.junit.Assert;
 import org.junit.Test;
@@ -29,7 +30,7 @@ public class CustomerDAOTest {
     public void shouldGetCustomers()
     {
         ArrayList<CustomerEntity> result = (ArrayList<CustomerEntity>) customerRepo.findAll();
-        Assert.assertEquals(1,result.size());
+        Assert.assertEquals(3,result.size());
     }
 
     @Test
@@ -40,6 +41,22 @@ public class CustomerDAOTest {
 
         ArrayList<CustomerEntity> result2 = (ArrayList<CustomerEntity>) customerRepo.findCustomerByName("NameThatDontExist");
         Assert.assertEquals(0,result2.size());
+    }
+
+    @Test
+    public void findCustomerOpinions()
+    {
+       //given
+        CustomerEntity cust1 = customerRepo.findById(1L).get();
+        //when
+        List<OpinionEntity> opinions = customerRepo.findCustomersOpinion(cust1);
+
+        //then
+        Assert.assertEquals(5,opinions.size());
+
+
+
+
     }
 
 }
