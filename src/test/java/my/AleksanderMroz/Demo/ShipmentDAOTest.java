@@ -2,8 +2,11 @@ package my.AleksanderMroz.Demo;
 
 
 import my.AleksanderMroz.Demo.entity.CustomerEntity;
+import my.AleksanderMroz.Demo.entity.OutpostEntity;
 import my.AleksanderMroz.Demo.entity.ShipmentEntity;
+import my.AleksanderMroz.Demo.enumeration.Cities;
 import my.AleksanderMroz.Demo.enumeration.ShipmentStatus;
+import my.AleksanderMroz.Demo.repository.OutpostRepository;
 import my.AleksanderMroz.Demo.repository.ShipmentRepository;
 import org.junit.Assert;
 import org.junit.Test;
@@ -20,9 +23,12 @@ import java.util.Optional;
 @RunWith(SpringRunner.class)
 @SpringBootTest(properties = "spring.profiles.active=mysql")
 @Transactional
-public class CustomShipmentDAOTest {
+public class ShipmentDAOTest {
     @Autowired
     ShipmentRepository shipmentRepository;
+
+    @Autowired
+    OutpostRepository outpostRepository;
 
 
     @Test
@@ -36,27 +42,40 @@ public class CustomShipmentDAOTest {
     {
          Optional<ShipmentEntity> first = shipmentRepository.findById(1L);
          Assert.assertNotNull(first);
-         // Assert.assertEquals("Moscow1",first.get().getDestination());
-         Assert.assertEquals(1501,first.get().getValue());
-         Assert.assertEquals(ShipmentStatus.WAIT,first.get().getStatus());
+         Assert.assertEquals(1001,first.get().getValue());
+         Assert.assertEquals(ShipmentStatus.TRANSPORT,first.get().getStatus());
     }
 
     @Test
     public void shouldGetShipmentByDestination()
     {
-        List<ShipmentEntity> second = shipmentRepository.findShipmentByDestination("Moscow2");
+        List<ShipmentEntity> second = shipmentRepository.findShipmentByDestination(Cities.WROCLAW);
+
         Assert.assertNotNull(second);
         Assert.assertEquals(1,second.size());
-        //Assert.assertEquals("Moscow2",second.get(0).getDestination());
+
 
     }
 
     @Test
     public void shouldGetShipmentByStatus()
     {
-        List<ShipmentEntity> allFive= shipmentRepository.findShipmentByStatus(ShipmentStatus.WAIT);
+        List<ShipmentEntity> allFive= shipmentRepository.findShipmentByStatus(ShipmentStatus.TRANSPORT);
         Assert.assertNotNull(allFive);
-        Assert.assertEquals(5,allFive.size());
+        Assert.assertEquals(4,allFive.size());
     }
+
+    @Test
+    public void shouldFindShipmentsInOutpost()
+    {
+        OutpostEntity outpost = outpostRepository.findById(2L).get();
+
+        List<ShipmentEntity> result= shipmentRepository.findShipmentsInOutpost(outpost);
+        Assert.assertNotNull(result);
+        Assert.assertEquals(3,result.size());
+    }
+
+
+
 
 }

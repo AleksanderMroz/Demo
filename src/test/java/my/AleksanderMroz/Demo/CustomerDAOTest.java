@@ -3,6 +3,7 @@ package my.AleksanderMroz.Demo;
 
 import my.AleksanderMroz.Demo.entity.CustomerEntity;
 import my.AleksanderMroz.Demo.entity.OpinionEntity;
+import my.AleksanderMroz.Demo.entity.ShipmentEntity;
 import my.AleksanderMroz.Demo.repository.CustomerRepository;
 import org.junit.Assert;
 import org.junit.Test;
@@ -53,10 +54,30 @@ public class CustomerDAOTest {
 
         //then
         Assert.assertEquals(5,opinions.size());
+    }
 
+    @Test
+    public void findCustomerDeliveredShipments()
+    {
+        //given
+        CustomerEntity cust2 = customerRepo.findById(2L).get();
+        //when
+        List<ShipmentEntity> delivered_shipments = customerRepo.findAllDeliveredShipments(cust2);
 
+        //then
+        Assert.assertEquals(1,delivered_shipments.size());
+    }
 
+    @Test
+    public void findCustomerShipments()
+    {
+        //given
+        CustomerEntity cust2 = customerRepo.findById(2L).get();
+        //when
+        List<ShipmentEntity> delivered_shipments = customerRepo.findAllShipments(cust2);
 
+        //then
+        Assert.assertEquals(2,delivered_shipments.size());
     }
 
 }

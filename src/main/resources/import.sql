@@ -56,6 +56,10 @@ insert into OPINION(description,id_product,id_customer) values ("Not bad at all"
 insert into OPINION(description,id_product,id_customer) values ("Not bad at all",4,1);
 insert into OPINION(description,id_product,id_customer) values ("Not bad at all",5,1);
 
+insert into OPINION(description,id_product,id_customer) values ("Not bad at all",1,2);
+insert into OPINION(description,id_product,id_customer) values ("Not bad at all",2,2);
+insert into OPINION(description,id_product,id_customer) values ("Not bad at all",3,2);
+
 
 
 
