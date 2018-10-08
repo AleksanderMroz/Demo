@@ -45,18 +45,14 @@ public class CustomerRepositoryImpl implements CustomerCustomRepository {
 
     @Override
     public List<ProductEntity> findCustomersProduct(CustomerEntity customerEntity) {
-        Long id = customerEntity.getId();
+        Long specific_ID = customerEntity.getId();
         JPAQueryFactory queryFactory = new JPAQueryFactory(entityManager);
         QCustomerEntity customer= QCustomerEntity.customerEntity;
         QShipmentEntity shipment = QShipmentEntity.shipmentEntity;
         QProductEntity product = QProductEntity.productEntity;
 
-
-
-        return (List<ProductEntity>) queryFactory.from(customer)
-                .innerJoin(customer.shipments,shipment)
-                .where(customer.id.eq(shipment.owner.id))
-                .fetch();
+        List<ProductEntity>product_list= queryFactory.selectFrom(product).innerJoin(shipment).on(customer.shipments.contains(shipment)).innerJoin(product).on(shipment.products.contains(product)).fetch();
+        return   product_list;
     }
 
     @Override

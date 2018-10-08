@@ -3,6 +3,7 @@ package my.AleksanderMroz.Demo;
 
 import my.AleksanderMroz.Demo.entity.CustomerEntity;
 import my.AleksanderMroz.Demo.entity.OpinionEntity;
+import my.AleksanderMroz.Demo.entity.ProductEntity;
 import my.AleksanderMroz.Demo.entity.ShipmentEntity;
 import my.AleksanderMroz.Demo.repository.CustomerRepository;
 import org.junit.Assert;
@@ -78,6 +79,18 @@ public class CustomerDAOTest {
 
         //then
         Assert.assertEquals(2,delivered_shipments.size());
+    }
+
+    @Test
+    public void shouldFindCustomerProducts()
+    {
+        //given
+        CustomerEntity customer = customerRepo.findById(1L).get();
+        //when
+        List<ProductEntity> delivered_product = customerRepo.findCustomersProduct(customer);
+
+        //then
+        Assert.assertEquals(2,delivered_product.size());
     }
 
 }

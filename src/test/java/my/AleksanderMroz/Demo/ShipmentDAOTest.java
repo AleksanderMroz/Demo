@@ -40,7 +40,12 @@ public class ShipmentDAOTest {
     @Test
     public void shouldGetShipmentById()
     {
+        //given
+
+        //when
          Optional<ShipmentEntity> first = shipmentRepository.findById(1L);
+
+         //then
          Assert.assertNotNull(first);
          Assert.assertEquals(1001,first.get().getValue());
          Assert.assertEquals(ShipmentStatus.TRANSPORT,first.get().getStatus());
@@ -49,8 +54,13 @@ public class ShipmentDAOTest {
     @Test
     public void shouldGetShipmentByDestination()
     {
+
+        //given
+
+        //when
         List<ShipmentEntity> second = shipmentRepository.findShipmentByDestination(Cities.WROCLAW);
 
+        //then
         Assert.assertNotNull(second);
         Assert.assertEquals(1,second.size());
 
@@ -60,7 +70,12 @@ public class ShipmentDAOTest {
     @Test
     public void shouldGetShipmentByStatus()
     {
+        //given
+
+        //when
         List<ShipmentEntity> allFive= shipmentRepository.findShipmentByStatus(ShipmentStatus.TRANSPORT);
+
+        //then
         Assert.assertNotNull(allFive);
         Assert.assertEquals(4,allFive.size());
     }
@@ -68,9 +83,13 @@ public class ShipmentDAOTest {
     @Test
     public void shouldFindShipmentsInOutpost()
     {
+        //given
         OutpostEntity outpost = outpostRepository.findById(2L).get();
 
+        //when
         List<ShipmentEntity> result= shipmentRepository.findShipmentsInOutpost(outpost);
+
+        //then
         Assert.assertNotNull(result);
         Assert.assertEquals(3,result.size());
     }
