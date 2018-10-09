@@ -1,8 +1,8 @@
 package my.AleksanderMroz.Demo.repository.customDAO.implementation;
 
 
-import my.AleksanderMroz.Demo.entity.CourierEntitiy;
-import my.AleksanderMroz.Demo.entity.ShipmentEntity;
+import com.querydsl.jpa.impl.JPAQueryFactory;
+import my.AleksanderMroz.Demo.entity.*;
 import my.AleksanderMroz.Demo.repository.customDAO.CourierCustomRepository;
 import org.springframework.stereotype.Repository;
 
@@ -17,7 +17,16 @@ public class CourierRepositoryImpl implements CourierCustomRepository {
     EntityManager entityManager;
 
     @Override
-    public List<CourierEntitiy> findAllCouriersThatCarriedShipment(ShipmentEntity shipment) {
-        return null;
+    public List<CourierEntitiy> findAllCouriersThatCarriedShipment(ShipmentEntity shipmentEntity) {
+        Long specific_ID = shipmentEntity.getId();
+        JPAQueryFactory queryFactory = new JPAQueryFactory(entityManager);
+
+        QShipmentEntity shipment = QShipmentEntity.shipmentEntity;
+        QCourierEntitiy courier = QCourierEntitiy.courierEntitiy;
+
+
+
+        List<CourierEntitiy>courier_list= queryFactory.select(courier).from(courier).innerJoin(courier.shipments,shipment).where(courier.shipments.contains(shipmentEntity).and(shipment.id.eq(1L))).fetch();
+        return   courier_list;
     }
 }
