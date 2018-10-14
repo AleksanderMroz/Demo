@@ -51,14 +51,14 @@ insert into PRODUCT (value,size_Status,variant_Status,id_shipment) values (1000,
 
 
 insert into OPINION(description,id_product,id_customer) values ("Not bad at all",1,1);
-insert into OPINION(description,id_product,id_customer) values ("Not bad at all",2,1);
-insert into OPINION(description,id_product,id_customer) values ("Not bad at all",3,1);
-insert into OPINION(description,id_product,id_customer) values ("Not bad at all",4,1);
-insert into OPINION(description,id_product,id_customer) values ("Not bad at all",5,1);
+insert into OPINION(description,id_product,id_customer) values ("Not bad at all,Maybe",2,1);
+insert into OPINION(description,id_product,id_customer) values ("Not bad at all, quiet good",3,1);
+insert into OPINION(description,id_product,id_customer) values ("Awesome",4,1);
+insert into OPINION(description,id_product,id_customer) values ("Super",5,1);
 
-insert into OPINION(description,id_product,id_customer) values ("Not bad at all",1,2);
-insert into OPINION(description,id_product,id_customer) values ("Not bad at all",2,2);
-insert into OPINION(description,id_product,id_customer) values ("Not bad at all",3,2);
+insert into OPINION(description,id_product,id_customer) values ("Worst thing I had ever bought",1,2);
+insert into OPINION(description,id_product,id_customer) values ("It could be better",2,2);
+insert into OPINION(description,id_product,id_customer) values ("Its to far",3,2);
 
 
 
