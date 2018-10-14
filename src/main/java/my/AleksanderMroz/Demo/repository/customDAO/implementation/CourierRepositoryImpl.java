@@ -3,6 +3,7 @@ package my.AleksanderMroz.Demo.repository.customDAO.implementation;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import my.AleksanderMroz.Demo.entity.*;
+import my.AleksanderMroz.Demo.enumeration.Cities;
 import my.AleksanderMroz.Demo.repository.customDAO.CourierCustomRepository;
 import org.springframework.stereotype.Repository;
 
@@ -26,7 +27,25 @@ public class CourierRepositoryImpl implements CourierCustomRepository {
 
 
 
-        List<CourierEntitiy>courier_list= queryFactory.select(courier).from(courier).innerJoin(courier.shipments,shipment).where(courier.shipments.contains(shipmentEntity).and(shipment.id.eq(1L))).fetch();
+        List<CourierEntitiy>courier_list= queryFactory.select(courier).from(courier).innerJoin(courier.shipments,shipment).where(courier.shipments.contains(shipmentEntity).and(shipment.id.eq(specific_ID ))).fetch();
         return   courier_list;
     }
+
+    @Override
+    public void changeShipmentLocation(ShipmentEntity shipmentEntity, OutpostEntity newLocation) {
+
+        Long specific_ID = shipmentEntity.getId();
+        JPAQueryFactory queryFactory = new JPAQueryFactory(entityManager);
+
+        QShipmentEntity shipment = QShipmentEntity.shipmentEntity;
+        QCourierEntitiy courier = QCourierEntitiy.courierEntitiy;
+
+        ShipmentEntity shipmentToChange= queryFactory.selectFrom(shipment).innerJoin(shipment.couriers,courier)
+                .where(courier.shipments.contains(shipmentEntity).and(shipment.id.eq(specific_ID )))
+        .fetchFirst();
+
+        shipmentToChange.setCurrentOutpost(newLocation);
+    }
+
+
 }

@@ -1,4 +1,4 @@
-package my.AleksanderMroz.Demo;
+package my.AleksanderMroz.Demo.DAOTests;
 
 
 import my.AleksanderMroz.Demo.entity.CustomerEntity;
