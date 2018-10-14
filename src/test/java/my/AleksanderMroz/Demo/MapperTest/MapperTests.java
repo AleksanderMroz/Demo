@@ -46,8 +46,6 @@ public class MapperTests {
     ProductMapper productMapper;
     OutpostMapper outpostMapper;
 
-
-
     @Test
     public void shouldMapCustomers()
     {
@@ -71,7 +69,6 @@ public class MapperTests {
         Assert.assertEquals(list_Entities.size(),list_Entities2.size());
         Assert.assertEquals(list_Entities.get(0).getCustomerName(),list_Entities2.get(0).getCustomerName());
     }
-
     @Test
     public void shouldMapShipments()
     {
@@ -95,7 +92,6 @@ public class MapperTests {
         Assert.assertEquals(list_Entities.size(),list_Entities2.size());
         Assert.assertEquals(list_Entities.get(0).getValue(),list_Entities2.get(0).getValue());
     }
-
     @Test
     public void shouldMapCourier()
     {
@@ -118,7 +114,6 @@ public class MapperTests {
         Assert.assertEquals(list_Entities.size(),list_Entities2.size());
         Assert.assertEquals(list_Entities.get(0).getAddress(),list_Entities2.get(0).getAddress());
     }
-
     @Test
     public void shouldMapOpinion()
     {
@@ -140,7 +135,6 @@ public class MapperTests {
         Assert.assertEquals(list_Entities.size(),list_Entities2.size());
         Assert.assertEquals(list_Entities.get(0).getDescription(),list_Entities2.get(0).getDescription());
     }
-
     @Test
     public void shouldMapOutpost()
     {
@@ -162,7 +156,6 @@ public class MapperTests {
         Assert.assertEquals(list_Entities.size(),list_Entities2.size());
         Assert.assertEquals(list_Entities.get(0).getLocation(),list_Entities2.get(0).getLocation());
     }
-
     @Test
     public void shouldMapProduct()
     {
@@ -185,8 +178,4 @@ public class MapperTests {
         Assert.assertEquals(list_Entities.get(0).getValue(),list_Entities2.get(0).getValue());
 
     }
-
-
-
-
 }

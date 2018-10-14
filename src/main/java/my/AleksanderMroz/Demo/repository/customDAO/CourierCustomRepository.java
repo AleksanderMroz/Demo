@@ -23,7 +23,6 @@ public interface CourierCustomRepository {
      * @param newLocation - new City location
      * Method can change current location of shipment
      */
-    void changeShipmentLocation(ShipmentEntity shipmentEntity, OutpostEntity newLocation);
 
 
 }

@@ -31,21 +31,6 @@ public class CourierRepositoryImpl implements CourierCustomRepository {
         return   courier_list;
     }
 
-    @Override
-    public void changeShipmentLocation(ShipmentEntity shipmentEntity, OutpostEntity newLocation) {
-
-        Long specific_ID = shipmentEntity.getId();
-        JPAQueryFactory queryFactory = new JPAQueryFactory(entityManager);
-
-        QShipmentEntity shipment = QShipmentEntity.shipmentEntity;
-        QCourierEntitiy courier = QCourierEntitiy.courierEntitiy;
-
-        ShipmentEntity shipmentToChange= queryFactory.selectFrom(shipment).innerJoin(shipment.couriers,courier)
-                .where(courier.shipments.contains(shipmentEntity).and(shipment.id.eq(specific_ID )))
-        .fetchFirst();
-
-        shipmentToChange.setCurrentOutpost(newLocation);
-    }
 
 
 }
