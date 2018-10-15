@@ -1,10 +1,13 @@
 package my.AleksanderMroz.Demo.entity;
 
+import org.hibernate.annotations.Proxy;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @Table(name = "CUSTOMER")
+@Proxy(lazy=false)
 public class CustomerEntity {
 
     @Id

@@ -2,11 +2,13 @@ package my.AleksanderMroz.Demo.entity;
 
 
 import my.AleksanderMroz.Demo.enumeration.Cities;
+import org.hibernate.annotations.Proxy;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "OUTPOST")
+@Proxy(lazy=false)
 public class OutpostEntity {
 
     @Id

@@ -1,12 +1,14 @@
 package my.AleksanderMroz.Demo.entity;
 
 import my.AleksanderMroz.Demo.enumeration.ShipmentStatus;
+import org.hibernate.annotations.Proxy;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @Table(name="SHIPMENT")
+@Proxy(lazy=false)
 public class ShipmentEntity {
 
     @Id

@@ -1,10 +1,13 @@
 package my.AleksanderMroz.Demo.entity;
 
 
+import org.hibernate.annotations.Proxy;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name="OPINION")
+@Proxy(lazy=false)
 public class OpinionEntity {
 
     @Id
