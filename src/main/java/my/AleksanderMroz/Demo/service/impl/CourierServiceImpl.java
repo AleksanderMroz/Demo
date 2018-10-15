@@ -52,15 +52,24 @@ public class CourierServiceImpl implements CourierService {
     @Override
     public void changeShipmentStatus(ShipmentTo shipment, ShipmentStatus status) {
 
+        Long id = shipment.getId();
+        ShipmentEntity toChange= shipmentRepository.findById(id).get();
+        toChange.setStatus(status);
+        shipmentRepository.save(toChange);
     }
 
     @Override
     public CourierTo saveCourier(CourierTo courier) {
-        return null;
+
+        CourierEntitiy courierEntitiy = CourierMapper.map(courier);
+        courierRepository.save(courierEntitiy);
+        return CourierMapper.map(courierEntitiy);
     }
 
     @Override
     public void deleteCourier(Long id) {
+
+    courierRepository.deleteById(id);
 
     }
 }
