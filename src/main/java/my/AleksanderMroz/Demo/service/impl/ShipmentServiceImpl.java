@@ -1,8 +1,13 @@
 package my.AleksanderMroz.Demo.service.impl;
 
 
+import my.AleksanderMroz.Demo.entity.CourierEntitiy;
+import my.AleksanderMroz.Demo.entity.ShipmentEntity;
 import my.AleksanderMroz.Demo.enumeration.Cities;
 import my.AleksanderMroz.Demo.enumeration.ShipmentStatus;
+import my.AleksanderMroz.Demo.mapper.CourierMapper;
+import my.AleksanderMroz.Demo.mapper.OutpostMapper;
+import my.AleksanderMroz.Demo.mapper.ShipmentMapper;
 import my.AleksanderMroz.Demo.repository.ShipmentRepository;
 import my.AleksanderMroz.Demo.service.ShipmentService;
 import my.AleksanderMroz.Demo.to.OutpostTo;
@@ -25,26 +30,30 @@ public class ShipmentServiceImpl implements ShipmentService {
 
     @Override
     public List<ShipmentTo> findShipmentByDestination(Cities destination) {
-        return null;
+        return ShipmentMapper.map2To(shipmentRepository.findShipmentByDestination(destination));
     }
 
     @Override
     public List<ShipmentTo> findShipmentByStatus(ShipmentStatus status) {
-        return null;
+
+        return ShipmentMapper.map2To(shipmentRepository.findShipmentByStatus(status));
     }
 
     @Override
     public List<ShipmentTo> findShipmentsInOutpost(OutpostTo outpost) {
-        return null;
+        return ShipmentMapper.map2To(shipmentRepository.findShipmentsInOutpost(OutpostMapper.map(outpost)));
     }
 
     @Override
     public ShipmentTo saveShipment(ShipmentTo shipment) {
-        return null;
+
+        ShipmentEntity shipmentEntitiy = ShipmentMapper.map(shipment);
+        shipmentRepository.save(shipmentEntitiy);
+        return shipment;
     }
 
     @Override
     public void deleteShipment(Long id) {
-
+        shipmentRepository.deleteById(id);
     }
 }

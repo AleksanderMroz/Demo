@@ -23,6 +23,8 @@ import java.util.List;
 public class CourierServiceImpl implements CourierService {
     private CourierRepository courierRepository;
     private ShipmentRepository shipmentRepository;
+
+
     @Autowired
     public CourierServiceImpl(CourierRepository courierRepository,ShipmentRepository shipmentRepository){
         this.courierRepository=courierRepository;

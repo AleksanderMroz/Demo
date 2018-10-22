@@ -29,19 +29,12 @@ public class CourierServiceTest {
 
     @Autowired
     CourierService courierService;
-
-    @Autowired
-    CustomerRepository customerRepo;
-    @Autowired
-    CourierRepository courierRepo;
-    @Autowired
-    OpinionRepository opinionRepo;
     @Autowired
     OutpostRepository outpostRepo;
     @Autowired
-    ProductRepository productRepo;
-    @Autowired
     ShipmentRepository shipmentRepo;
+    @Autowired
+    CourierRepository courierRepo;
 
 
     @Test

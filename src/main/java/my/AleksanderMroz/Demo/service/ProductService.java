@@ -10,6 +10,8 @@ import java.util.List;
 public interface ProductService {
 
     List<OpinionTo> getAllOpinions(ProductTo product);
+
+
     ProductTo saveProduct(ProductTo product);
     void deleteProduct(Long id);
 }
