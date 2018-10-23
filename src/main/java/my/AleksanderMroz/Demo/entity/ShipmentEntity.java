@@ -40,7 +40,7 @@ public class ShipmentEntity {
     @OneToMany(fetch = FetchType.LAZY,mappedBy="whole_package",cascade={CascadeType.ALL})
     private List<ProductEntity> products;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.MERGE })
+    @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
     @JoinTable(name = "COURIER_SHIPMENT", joinColumns = {
             @JoinColumn(name = "COURIER_ID", nullable = false, updatable = false) }, inverseJoinColumns = {
             @JoinColumn(name = "SHIPMENT_ID", nullable = false, updatable = false) })

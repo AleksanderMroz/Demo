@@ -20,10 +20,10 @@ public class CustomerEntity {
     @Column(nullable = false, length = 200)
     private String address;
 
-    @OneToMany(fetch = FetchType.LAZY,mappedBy="owner",cascade={CascadeType.ALL})
+    @OneToMany(fetch = FetchType.LAZY,mappedBy="owner", orphanRemoval = true,cascade={CascadeType.ALL})
     private List<ShipmentEntity> shipments;
 
-    @OneToMany(fetch = FetchType.LAZY,mappedBy="customer_id",cascade={CascadeType.ALL})
+    @OneToMany(fetch = FetchType.LAZY,mappedBy="customer_id", orphanRemoval = true,cascade={CascadeType.ALL})
     private List<OpinionEntity> opinions;
 
 

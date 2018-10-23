@@ -37,21 +37,9 @@ public class BasicDAOTests {
     @Autowired
     ShipmentRepository shipmentRepo;
 
-    CustomerEntity customer;
-    ShipmentEntity shipment;
-    OutpostEntity outpost;
-    ProductEntity product;
-    OpinionEntity opinion;
-    CourierEntitiy courier;
-    List<ShipmentEntity> listShipment;
-    List<OpinionEntity> listOpinion;
 
 
-    @Before
-    public void init()
-    {
-        customer = new CustomerEntity(4L,"Alek","1234","Somewhere",listShipment,listOpinion);
-    }
+
 
     @Test
     public void trueIsTrue()
@@ -75,15 +63,16 @@ public class BasicDAOTests {
         //then
         Assert.assertEquals(3,customers.size());
         Assert.assertEquals(3,couriers.size());
-        Assert.assertEquals(5,opinions.size());
+        Assert.assertEquals(8,opinions.size());
         Assert.assertEquals(6,outposts.size());
         Assert.assertEquals(6,shipments.size());
         Assert.assertEquals(21,products.size());
     }
     @Test
-    public void shouldAddAndRemoveCustomers()
+    public void shouldAddCustomers()
     {
         //given
+        CustomerEntity customer = new CustomerEntity(null,"Alek","1234","Somewhere",null,null);;
         ArrayList<CustomerEntity> result = (ArrayList<CustomerEntity>) customerRepo.findAll();
         Assert.assertEquals(3,result.size());
 
@@ -92,10 +81,5 @@ public class BasicDAOTests {
          result = (ArrayList<CustomerEntity>) customerRepo.findAll();
         Assert.assertEquals(4,result.size());
 
-        //then
-        customerRepo.delete(customer);
-        result = (ArrayList<CustomerEntity>) customerRepo.findAll();
-        Assert.assertEquals(3,result.size());
     }
-
 }

@@ -13,11 +13,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(properties = "spring.profiles.active=mysql")
+@Transactional
 public class CustomerDAOTest {
 
     @Autowired
@@ -90,7 +92,7 @@ public class CustomerDAOTest {
         List<ProductEntity> delivered_product = customerRepo.findCustomersProduct(customer);
 
         //then
-        Assert.assertEquals(2,delivered_product.size());
+        Assert.assertEquals(7,delivered_product.size());
     }
 
 }

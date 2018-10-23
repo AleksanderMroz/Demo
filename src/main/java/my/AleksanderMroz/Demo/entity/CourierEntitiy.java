@@ -24,7 +24,7 @@ public class CourierEntitiy {
 
 
 
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "couriers",cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "couriers",cascade = { CascadeType.ALL })
     List<ShipmentEntity> shipments;
 
 

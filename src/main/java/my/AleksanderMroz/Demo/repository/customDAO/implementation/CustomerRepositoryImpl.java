@@ -51,8 +51,10 @@ public class CustomerRepositoryImpl implements CustomerCustomRepository {
         QShipmentEntity shipment = QShipmentEntity.shipmentEntity;
         QProductEntity product = QProductEntity.productEntity;
 
-        List<ProductEntity>product_list= queryFactory.selectFrom(product).innerJoin(shipment).on(customer.shipments.contains(shipment)).innerJoin(product).on(shipment.products.contains(product)).fetch();
-        return   product_list;
+
+        List<ProductEntity>product_list2= queryFactory.selectFrom(product).innerJoin(shipment).on(shipment.products.contains(product)).innerJoin(customer).on(customer.shipments.contains(shipment)).where(customer.id.eq(specific_ID)).fetch();
+
+        return   product_list2;
     }
 
     @Override
