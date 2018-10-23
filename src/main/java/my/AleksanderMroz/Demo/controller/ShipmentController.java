@@ -20,7 +20,7 @@ public class ShipmentController {
 
     @GetMapping()
     public String showBookList(Model model) {
-        model.addAttribute("shipmentList", customerService.findCustomerByName("Aleksander"));
+        model.addAttribute("shipmentList", customerService.findAllShipments(customerService.findCustomerByName("Aleksander").get(0)));
         return "shipments";
     }
 
