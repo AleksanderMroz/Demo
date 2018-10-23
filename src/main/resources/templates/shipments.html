@@ -17,6 +17,22 @@
 </section>
 
 
+
+    <section class="container">
+        <div class="row">
+            <th:block th:each="shipment : ${shipmentList}">
+                <div class="col-sm-6 col-md-3" style="padding-bottom: 15px">
+                    <div class="thumbnail">
+                        <div class="caption">
+                            <h3 th:text="${shipment.id}"></h3>
+                        </div>
+                    </div>
+                </div>
+            </th:block>
+        </div>
+    </section>
+
+
 </div>
 </body>
 </html>
