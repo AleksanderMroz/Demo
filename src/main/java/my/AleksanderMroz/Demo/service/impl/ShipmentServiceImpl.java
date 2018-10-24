@@ -45,6 +45,11 @@ public class ShipmentServiceImpl implements ShipmentService {
     }
 
     @Override
+    public List<ShipmentTo> findAll() {
+        return ShipmentMapper.map2To((List<ShipmentEntity>) shipmentRepository.findAll());
+    }
+
+    @Override
     public ShipmentTo saveShipment(ShipmentTo shipment) {
 
         ShipmentEntity shipmentEntitiy = ShipmentMapper.map(shipment);

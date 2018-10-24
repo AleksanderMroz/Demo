@@ -14,6 +14,7 @@ public interface ShipmentService {
     List<ShipmentTo> findShipmentByStatus( ShipmentStatus status);
     List<ShipmentTo> findShipmentsInOutpost (OutpostTo outpost);
 
+    List<ShipmentTo> findAll();
     ShipmentTo saveShipment(ShipmentTo shipment);
     void deleteShipment(Long id);
 }

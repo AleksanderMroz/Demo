@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{fragments/layout}">
+<head>
+    <title>Order Page</title>
+</head>
+<body>
+<div layout:fragment="content" th:remove="tag">
+    <section>
+        <div class="jumbotron">
+            <div class="container">
+                <h1>Shipment</h1>
+                <p>This page show all info about one shipment</p>
+            </div>
+        </div>
+    </section>
+    <section class="container">
+        <div class="row">
+            <th:block th:each="courier : ${courierList}">
+                <div class="col-sm-6 col-md-3" style="padding-bottom: 15px">
+                    <div class="thumbnail">
+                        <div class="caption">
+                            <p style="float:left"> ID:</p>
+                            <p style="float:center" th:text="${courier.id}"></p>
+                        </div>
+                    </div>
+                </div>
+            </th:block>
+        </div>
+    </section>
+    <section class="container">
+        <div class="row">
+            <div class="col-md-5">
+                <p>
+                <strong>Shipment id </strong><spanth th:text="${shipment.id}"></spanth>
+            </p>
+                <p>
+                    <strong>Start location </strong><spanth th:text="${shipment.startOutpost.location}"></spanth>
+                </p>
+                <p>
+                    <strong>Current location </strong><spanth th:text="${shipment.currentOutpost.location}"></spanth>
+                </p>
+
+                <p>
+                    <strong>End location </strong><spanth th:text="${shipment.endOutpost.location}"></spanth>
+                </p>
+                <p>
+                    <a th:href="@{'/shipments'}" class="btn btn-default">
+                        <span class="glyphicon-hand-left glyphicon"></span> back
+                    </a>
+                </p>
+
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+</div>
+</body>
+</html>

@@ -19,8 +19,6 @@ public interface CustomerService {
     List<ProductTo> findCustomersProduct(CustomerTo customerTo);
     List<ShipmentTo> findAllDeliveredShipments(CustomerTo customerTo);
     List<ShipmentTo> findAllShipments(CustomerTo customerTo);
-
-
     CustomerTo saveCustomer(CustomerTo customer);
     void deleteCustomer(Long id);
 }
