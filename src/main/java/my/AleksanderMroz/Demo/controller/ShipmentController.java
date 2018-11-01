@@ -10,9 +10,7 @@ import my.AleksanderMroz.Demo.to.ShipmentTo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -34,6 +32,9 @@ public class ShipmentController {
 
     @GetMapping("/order")
     public String showOrderPage(Model model) {
+
+
+        model.addAttribute("newShipment", new ShipmentTo());
         return "orderpage";
     }
 
@@ -52,6 +53,13 @@ public class ShipmentController {
         shipmentService.deleteShipment(id);
         return "welcome";
     }
+
+    @PostMapping("/new_shipment")
+    public String createNewShipment(Model model,@ModelAttribute("newShipment") ShipmentTo shipmentTo) {
+        shipmentService.saveShipment(shipmentTo);
+        return "welcome";
+    }
+
 
 
 }

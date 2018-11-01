@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class HomeController {
 
 
-    private static final String INFO_TEXT = "Moja aplikacja do zademonstrowania umiejętnosci ze SpringBootem, Hibernatem, Bazami Danych ";
+    private static final String INFO_TEXT = "Aplikacja, na której ćwiczyłem użycie SpringBoota i Baz Danych ";
     protected static final String WELCOME = "Witaj";
 
 

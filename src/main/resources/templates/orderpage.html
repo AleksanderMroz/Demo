@@ -16,6 +16,31 @@
         </div>
     </section>
 
+    <section class="container">
+        <form action="#" th:action="@{/shipments/new_shipment}" th:object="${newShipment}"
+              method="post" class="form-horizontal">
+            <fieldset>
+                <legend>Create new shipment</legend>
+
+                <div class="form-group">
+                    <label class="control-label col-lg-2" for="name">Value</label>
+                    <div class="col-lg-10">
+                        <input id="name" type="text" th:field="*{value}"
+                               class="form:input-large" />
+                    </div>
+                </div>
+
+            </fieldset>
+            <div class="form-group">
+                <div class="col-lg-offset-2 col-lg-10">
+                    <input type="submit" id="btnAdd" class="btn btn-primary"
+                           value="Submit" />
+                </div>
+
+            </div>
+        </form>
+    </section>
+
 
 </div>
 </body>
