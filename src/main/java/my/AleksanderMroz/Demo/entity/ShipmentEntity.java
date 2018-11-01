@@ -32,7 +32,7 @@ public class ShipmentEntity {
     private OutpostEntity endOutpost;
 
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+    @ManyToOne(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "ID_OWNER")
     private CustomerEntity owner;
 
@@ -40,10 +40,10 @@ public class ShipmentEntity {
     @OneToMany(fetch = FetchType.LAZY,mappedBy="whole_package",cascade={CascadeType.ALL})
     private List<ProductEntity> products;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+    @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(name = "COURIER_SHIPMENT", joinColumns = {
-            @JoinColumn(name = "COURIER_ID", nullable = false, updatable = false) }, inverseJoinColumns = {
-            @JoinColumn(name = "SHIPMENT_ID", nullable = false, updatable = false) })
+            @JoinColumn(name = "SHIPMENT_ID", nullable = false, updatable = false) }, inverseJoinColumns = {
+            @JoinColumn(name = "COURIER_ID", nullable = false, updatable = false) })
     List<CourierEntitiy> couriers;
 
 

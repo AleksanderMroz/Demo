@@ -17,11 +17,11 @@ public class OpinionEntity {
     @Column(nullable = false, length = 3000)
     private String description;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+    @ManyToOne(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
     @JoinColumn(name = "ID_PRODUCT")
     private ProductEntity described_product;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+    @ManyToOne(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
     @JoinColumn(name = "ID_CUSTOMER")
     private CustomerEntity customer_id;
 

@@ -70,5 +70,5 @@ insert into COURIER(courier_name,password,address) values ("Mariusz","user6","ul
 insert into COURIER_SHIPMENT(courier_id,shipment_id) values(1,3);
 insert into COURIER_SHIPMENT(courier_id,shipment_id) values(2,3);
 insert into COURIER_SHIPMENT(courier_id,shipment_id) values(1,3);
-insert into COURIER_SHIPMENT(courier_id,shipment_id) values(2,3);
+insert into COURIER_SHIPMENT(courier_id,shipment_id) values(2,4);
 

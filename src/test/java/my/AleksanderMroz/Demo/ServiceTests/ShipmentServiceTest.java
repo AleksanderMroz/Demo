@@ -1,6 +1,7 @@
 package my.AleksanderMroz.Demo.ServiceTests;
 
 
+import my.AleksanderMroz.Demo.entity.CustomerEntity;
 import my.AleksanderMroz.Demo.entity.ProductEntity;
 import my.AleksanderMroz.Demo.entity.ShipmentEntity;
 import my.AleksanderMroz.Demo.enumeration.Cities;
@@ -8,6 +9,7 @@ import my.AleksanderMroz.Demo.enumeration.ShipmentStatus;
 import my.AleksanderMroz.Demo.enumeration.SizeStatus;
 import my.AleksanderMroz.Demo.enumeration.VariantStatus;
 import my.AleksanderMroz.Demo.mapper.OutpostMapper;
+import my.AleksanderMroz.Demo.repository.CustomerRepository;
 import my.AleksanderMroz.Demo.repository.OutpostRepository;
 import my.AleksanderMroz.Demo.repository.ShipmentRepository;
 import my.AleksanderMroz.Demo.service.OutpostService;
@@ -36,6 +38,8 @@ public class ShipmentServiceTest{
     ShipmentRepository shipmentRepository;
     @Autowired
     OutpostRepository outpostRepository;
+    @Autowired
+    CustomerRepository customerRepository;
 
 
 
@@ -101,8 +105,26 @@ public class ShipmentServiceTest{
         List<ShipmentTo> list_od_shipments = shipmentService.findShipmentsInOutpost(outpostTo);
         //then
         Assert.assertEquals(3,list_od_shipments.size());
+    }
+
+    @Test
+    public void shouldDeleteOnlyShipment()
+    {
+        //given
+        List<ShipmentEntity> list = (List<ShipmentEntity>) shipmentRepository.findAll();
+        List<CustomerEntity> list2 = (List<CustomerEntity>) customerRepository.findAll();
 
 
+        Assert.assertEquals(6,list.size());
+        Assert.assertEquals(3,list2.size());
+        shipmentService.deleteShipment(3L);
+
+
+
+        list=(List<ShipmentEntity>) shipmentRepository.findAll();
+        list2 = (List<CustomerEntity>) customerRepository.findAll();
+        Assert.assertEquals(0,list.size());
+        Assert.assertEquals(0,list2.size());
 
     }
 

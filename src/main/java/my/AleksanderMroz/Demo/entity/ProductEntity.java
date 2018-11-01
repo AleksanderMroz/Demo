@@ -27,11 +27,11 @@ public class ProductEntity {
     @Enumerated(EnumType.STRING)
     private VariantStatus variantStatus;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+    @ManyToOne(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
     @JoinColumn(name = "ID_SHIPMENT")
     private ShipmentEntity whole_package;
 
-    @OneToMany(fetch = FetchType.LAZY,mappedBy="described_product",cascade={CascadeType.ALL})
+    @OneToMany(fetch = FetchType.LAZY,mappedBy="described_product",cascade={CascadeType.PERSIST, CascadeType.MERGE})
     private List<OpinionEntity> opinions;
 
     public ProductEntity() {

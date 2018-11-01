@@ -10,6 +10,7 @@ import my.AleksanderMroz.Demo.mapper.OutpostMapper;
 import my.AleksanderMroz.Demo.mapper.ShipmentMapper;
 import my.AleksanderMroz.Demo.repository.*;
 import my.AleksanderMroz.Demo.service.CourierService;
+import my.AleksanderMroz.Demo.to.CourierTo;
 import my.AleksanderMroz.Demo.to.OutpostTo;
 import my.AleksanderMroz.Demo.to.ShipmentTo;
 import org.junit.Assert;
@@ -38,6 +39,20 @@ public class CourierServiceTest {
     @Autowired
     CourierRepository courierRepo;
 
+
+    @Test
+    public void shouldFindAllCouriersThatCarriedShipment()
+    {
+        ShipmentTo shipmentTo1= ShipmentMapper.map(shipmentRepo.findById(1L).get());
+        ShipmentTo shipmentTo2= ShipmentMapper.map(shipmentRepo.findById(2L).get());
+        ShipmentTo shipmentTo3= ShipmentMapper.map(shipmentRepo.findById(3L).get());
+
+        List<CourierTo> list_of_couriers1 = courierService.findAllCouriersThatCarriedShipment(shipmentTo1);
+        List<CourierTo> list_of_couriers2 = courierService.findAllCouriersThatCarriedShipment(shipmentTo2);
+        List<CourierTo> list_of_couriers3 = courierService.findAllCouriersThatCarriedShipment(shipmentTo3);
+        Assert.assertTrue(false);
+
+    }
 
     @Test
     public void shouldChangeLocationOfShipment()

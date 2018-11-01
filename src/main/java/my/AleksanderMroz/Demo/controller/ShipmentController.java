@@ -41,11 +41,16 @@ public class ShipmentController {
     public String showShwipmentDetails(Model model, @RequestParam("id") Long id) {
         ShipmentTo shipmentTo = shipmentService.findAll().stream().filter(shipment -> shipment.getId().equals(id)).findFirst().orElse(null);
         model.addAttribute("shipment",shipmentTo);
-
-        List<CourierTo>courierList = courierService.findAllCouriers();
         List<CourierTo>courierList2 = courierService.findAllCouriersThatCarriedShipment(shipmentTo);
-        model.addAttribute("courierList",courierList);
+        model.addAttribute("courierList",courierList2);
         return "shipment";
+    }
+
+    @GetMapping("/delete")
+    public String shouldDelete(Model model, @RequestParam("id") Long id) {
+        ShipmentTo shipmentTo = shipmentService.findAll().stream().filter(shipment -> shipment.getId().equals(id)).findFirst().orElse(null);
+        shipmentService.deleteShipment(id);
+        return "welcome";
     }
 
 
